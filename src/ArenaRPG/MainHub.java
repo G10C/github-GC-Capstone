@@ -14,6 +14,5 @@ public class MainHub {
         System.out.println("Welcome to the Text Battle Simulator, " + name + ".");
         System.out.println();
         test1.playGame();
-
     }
 }
