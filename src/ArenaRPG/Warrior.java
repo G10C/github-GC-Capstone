@@ -44,30 +44,31 @@ public class Warrior {
         return false;
     }
 
-    public void takeHit(Enemy opponent) {
-        int playerDmg = (opponent.enemyPower() - baseDefense);
-        health = (health - playerDmg);
+    public void takeHit(int enemyPower) {
+        int playerDmg = (enemyPower - baseDefense);
+        if (playerDmg < 0){
+            playerDmg = 0;
+        }
+        health -= playerDmg;
+        if (health <= 0) {
+        health = 0;
+        }
 
-        if (health < 0) {
-            health = 0;
-        }
-        if (baseDefense > opponent.enemyPower()){
-            health = (playerDmg = 0);
-        }
-        System.out.println(opponent.getName() + " strikes and you take " + playerDmg + " damage!!");
-        System.out.println("Your current health: " + health);
+        System.out.println("You took " + playerDmg + " damage!");
+        System.out.println("Your current health is " + health);
     }
 
-    public void reducedHit(Enemy opponent) {
+    public void reducedHit(int enemyPower) {
+        int reducedDmg = enemyPower / 3; //reduces incoming power before defense
+        if (reducedDmg < 0){
+            reducedDmg = 0;
+        }
 
-        int reducedDmg = (opponent.enemyPower() / 3);
-        health = (health - reducedDmg);
-
-        if (health < 0) {
+        health -= reducedDmg;
+        if (health <= 0) {
             health = 0;
         }
-        System.out.println("You braced yourself for impact and took " + reducedDmg + " damage.");
-        System.out.println("Your current health: " + health);
+        System.out.println("You braced for impact and take " + reducedDmg + " reduced damage.");
+        System.out.println("Your current health is " + health);
     }
-
 }
