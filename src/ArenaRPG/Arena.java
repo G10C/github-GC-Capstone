@@ -1,9 +1,28 @@
 package ArenaRPG;
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class Arena {
     Scanner input = new Scanner(System.in);
+    private final Random rng = new Random();
+    private static final int Atk_Crit_Chance = 20; // 20% chance to triple damage
+    private static final int Atk_Miss_Chance = 10; // 10% chance to miss
+
+    private boolean roll(int percent){
+        return rng.nextInt(100) < percent;
+    }
+
+    private int applyHitModifier(int basePower){
+        if (roll(Atk_Miss_Chance)){
+            return 0; // missed
+        }
+        int power = basePower;
+        if (roll(Atk_Crit_Chance)){
+            power *= 3; // critical hit
+        }
+        return power;
+    }
 
 
     public void battle(Warrior fighter, Enemy opponent) {
