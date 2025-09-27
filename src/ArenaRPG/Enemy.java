@@ -66,35 +66,6 @@ public class Enemy {
             return enemyPower;
         }
 
-
-        public boolean isAlive() {
-            if (health >= 1) {
-                return true;
-            }
-            return false;
-        }
-
-        public void takeHit(int playerPower) {
-            int enemyDmg = (playerPower - baseDefense);
-            health = (health - enemyDmg);
-
-            if (health < 0) {
-                health = 0;
-            }
-
-            if(baseDefense > playerPower){
-                health = (enemyDmg = 0);
-            }
-
-            System.out.println("You attacked your opponent and dealt " + enemyDmg + " damage!");
-            System.out.println(name + "'s current health: " + health);
-
-        }
-
-    }
-
-
-
     public boolean isAlive() {
         if (health >= 1) {
             return true;
@@ -104,19 +75,17 @@ public class Enemy {
 
     public void takeHit(int playerPower) {
         int enemyDmg = (playerPower - baseDefense);
+        if (enemyDmg < 0){
+            enemyDmg = 0;
+        }
         health = (health - enemyDmg);
-
         if (health < 0) {
             health = 0;
         }
-
-        if(baseDefense > playerPower){
-            health = (enemyDmg = 0);
-        }
-
         System.out.println("You attacked your opponent and dealt " + enemyDmg + " damage!");
         System.out.println(name + "'s current health: " + health);
 
+    }
     }
 
 }
