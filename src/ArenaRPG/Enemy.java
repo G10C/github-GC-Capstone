@@ -19,7 +19,6 @@ public class Enemy {
         return name;
     }
 
-
     public void setEnemyWeaponStrength(int enemyWeaponStrength) {
         this.enemyWeaponStrength = enemyWeaponStrength;
     }
@@ -32,39 +31,8 @@ public class Enemy {
         setEnemyWeaponStrength(6);
         int enemyPower = (baseStrength + getEnemyWeaponStrength());
         return enemyPower;
-    }public class enemy {
-        String name;
-        int health;
-        int baseStrength;
-        int baseDefense;
-        int enemyWeaponStrength;
+    }
 
-
-        public void Enemy() {
-            this.name = "Zark";
-            this.health = 100;
-            this.baseStrength = 7;
-            this.baseDefense = 6;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-
-        public void setEnemyWeaponStrength(int enemyWeaponStrength) {
-            this.enemyWeaponStrength = enemyWeaponStrength;
-        }
-
-        public int getEnemyWeaponStrength() {
-            return enemyWeaponStrength;
-        }
-
-        public int enemyPower() {
-            setEnemyWeaponStrength(6);
-            int enemyPower = (baseStrength + getEnemyWeaponStrength());
-            return enemyPower;
-        }
 
     public boolean isAlive() {
         if (health >= 1) {
@@ -86,6 +54,4 @@ public class Enemy {
         System.out.println(name + "'s current health: " + health);
 
     }
-    }
-
 }
